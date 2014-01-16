@@ -10,12 +10,14 @@ using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NetworkInterface;
 
 namespace Vimba
 {
     public partial class MainMenu : Form
     {
         Random ran = new Random();
+        AdapterIdentifier ai = new AdapterIdentifier(3);
         public MainMenu()
         {
             ran.Next(15);
@@ -27,15 +29,23 @@ namespace Vimba
         private void MainMenu_Load(object sender, EventArgs e)
         {
 
+            FirstTime ft = new FirstTime();
+            ft.ShowDialog();
+            string path = ft.PathInfo;
             //WMI: getting Network adapters on computer
             ManagementObjectSearcher mos = 
                 new ManagementObjectSearcher("select * from Win32_NetworkAdapter " +
-                                             "Where AdapterType='Ethernet 802.3'");
-            foreach (var mo in mos.Get())
-            {
-                adapterCB.Items.Add(mo["Name"].ToString());
-                mo[]
-            }
+                                            "Where AdapterType='Ethernet 802.3'");
+            
+            ai.InializeAdapterList();
+            for (int i = 0; i < 3; i++)
+                adapterCB.Items.Add(ai.GetAdapterName(i));
+
+                foreach (var mo in mos.Get())
+                {
+                    adapterCB.Items.Add(mo["Name"].ToString());
+                    //mo[]
+                }
 
 
             adapterCB.SelectedIndex = 0;
@@ -65,12 +75,17 @@ namespace Vimba
 
         private void adapterCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ManagementObjectSearcher mos = new ManagementObjectSearcher(
+
+            macAdd_txt.Text = ai.GetAdapterMac(adapterCB.SelectedIndex);
+            /*ManagementObjectSearcher mos = new ManagementObjectSearcher(
                             "select * from Win32_NetworkAdapter where Name='"
                             + adapterCB.SelectedItem.ToString() + "'");
 
             ManagementObjectCollection moc = mos.Get();
             macAdd_txt.Text = "";
+
+
+
 
             if (randomMaxChkBox.Checked == false)
             {
@@ -98,7 +113,7 @@ namespace Vimba
                 
             }
 
-            macAdd_txt.Text = macAdd_txt.Text.Replace(':', ' ');
+            macAdd_txt.Text = macAdd_txt.Text.Replace(':', ' '); */
         }
 
         //-----------------------------------------------------------------------------------------
