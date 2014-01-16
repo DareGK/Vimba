@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HDChanger", "HDChanger\HDCh
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestAPP", "TestAPP\TestAPP.vcxproj", "{EB487A1F-E5DB-461C-81E7-FFCBCF80DC83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkInterface", "NetworkInterface\NetworkInterface.csproj", "{A92545EA-6331-4DC5-AA13-D3659C04E6E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,16 @@ Global
 		{EB487A1F-E5DB-461C-81E7-FFCBCF80DC83}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{EB487A1F-E5DB-461C-81E7-FFCBCF80DC83}.Release|Win32.ActiveCfg = Release|Win32
 		{EB487A1F-E5DB-461C-81E7-FFCBCF80DC83}.Release|Win32.Build.0 = Release|Win32
+		{A92545EA-6331-4DC5-AA13-D3659C04E6E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A92545EA-6331-4DC5-AA13-D3659C04E6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A92545EA-6331-4DC5-AA13-D3659C04E6E9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A92545EA-6331-4DC5-AA13-D3659C04E6E9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A92545EA-6331-4DC5-AA13-D3659C04E6E9}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{A92545EA-6331-4DC5-AA13-D3659C04E6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A92545EA-6331-4DC5-AA13-D3659C04E6E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A92545EA-6331-4DC5-AA13-D3659C04E6E9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A92545EA-6331-4DC5-AA13-D3659C04E6E9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A92545EA-6331-4DC5-AA13-D3659C04E6E9}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
