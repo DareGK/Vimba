@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstTime));
             this.doneBtn = new System.Windows.Forms.Button();
             this.filePathTxt = new System.Windows.Forms.TextBox();
             this.openFileBtn = new System.Windows.Forms.Button();
@@ -79,6 +80,7 @@
             this.Controls.Add(this.openFileBtn);
             this.Controls.Add(this.filePathTxt);
             this.Controls.Add(this.doneBtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FirstTime";

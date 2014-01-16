@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pathSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,7 +116,7 @@
             this.adapterCB.FormattingEnabled = true;
             this.adapterCB.Location = new System.Drawing.Point(108, 29);
             this.adapterCB.Name = "adapterCB";
-            this.adapterCB.Size = new System.Drawing.Size(204, 21);
+            this.adapterCB.Size = new System.Drawing.Size(253, 21);
             this.adapterCB.TabIndex = 8;
             this.adapterCB.SelectedIndexChanged += new System.EventHandler(this.adapterCB_SelectedIndexChanged);
             // 
@@ -140,10 +141,19 @@
             // 
             // settingsToolStripMenuItem
             // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pathSettingsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // pathSettingsToolStripMenuItem
+            // 
+            this.pathSettingsToolStripMenuItem.Name = "pathSettingsToolStripMenuItem";
+            this.pathSettingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pathSettingsToolStripMenuItem.Text = "Path Settings";
+            this.pathSettingsToolStripMenuItem.Click += new System.EventHandler(this.pathSettingsToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -163,7 +173,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainMenu";
-            this.Text = "Vimba: A Planetside 2 Tool";
+            this.Text = "Vimba: Planetside Hacking Tool";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -185,6 +195,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pathSettingsToolStripMenuItem;
     }
 }
 

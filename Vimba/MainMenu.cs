@@ -16,8 +16,11 @@ namespace Vimba
 {
     public partial class MainMenu : Form
     {
-        Random ran = new Random();
-        AdapterIdentifier ai = new AdapterIdentifier(3);
+        private Random ran = new Random();
+        private AdapterInformation ai = new AdapterInformation();
+        private string[] adNames;
+        private string[] adMacs;
+
         public MainMenu()
         {
             ran.Next(15);
@@ -32,36 +35,12 @@ namespace Vimba
             FirstTime ft = new FirstTime();
             ft.ShowDialog();
             string path = ft.PathInfo;
-            //WMI: getting Network adapters on computer
-            ManagementObjectSearcher mos = 
-                new ManagementObjectSearcher("select * from Win32_NetworkAdapter " +
-                                            "Where AdapterType='Ethernet 802.3'");
-            
-            ai.InializeAdapterList();
-            for (int i = 0; i < 3; i++)
-                adapterCB.Items.Add(ai.GetAdapterName(i));
 
-                foreach (var mo in mos.Get())
-                {
-                    adapterCB.Items.Add(mo["Name"].ToString());
-                    //mo[]
-                }
-
-
+            ai.GetAdapters();
+            adNames = ai.GetAdaptersNames();
+            adMacs = ai.GetAdaptersMacs();
+            adapterCB.Items.AddRange(adNames);
             adapterCB.SelectedIndex = 0;
-
-            /* string launchPath = "E:\\Users\\Public\\Sony Online Entertainment\\" +
-                                "Installed Games\\PlanetSide 2\\LaunchPad.exe";
-            FileStream LaunchPadMod = new FileStream(launchPath, FileMode.Open, FileAccess.ReadWrite);
-
-            LaunchPadMod.Seek(192377, SeekOrigin.Begin);
-            LaunchPadMod.WriteByte(235); //Change to JMP 0xE8
-            LaunchPadMod.Close();
-
-
-            Process.Start(launchPath);
-            Process.Start("C:\\Users\\George\\Documents\\Visual Studio 2013" +
-                          "\\Projects\\Vimba\\Debug\\Configurable_Injector.exe");*/
         }
 
         //-----------------------------------------------------------------------------------------
@@ -75,45 +54,22 @@ namespace Vimba
 
         private void adapterCB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            macAdd_txt.Text = string.Empty;
 
-            macAdd_txt.Text = ai.GetAdapterMac(adapterCB.SelectedIndex);
-            /*ManagementObjectSearcher mos = new ManagementObjectSearcher(
-                            "select * from Win32_NetworkAdapter where Name='"
-                            + adapterCB.SelectedItem.ToString() + "'");
-
-            ManagementObjectCollection moc = mos.Get();
-            macAdd_txt.Text = "";
-
-
-
-
-            if (randomMaxChkBox.Checked == false)
-            {
-                if (moc.Count > 0)
-                {
-                    foreach (ManagementObject mo in moc)
-                    {
-
-                        macAdd_txt.Text = (string) mo["MACAddress"];
-
-                    }
-                    
-                }
-
-            }
-            else
+            if (randomMaxChkBox.Checked == true)
             {
                 for (int i = 0; i < 6; i++)
                 {
                     macAdd_txt.Text += RandomHexNumber();
                     macAdd_txt.Text += RandomHexNumber();
-                    macAdd_txt.Text += ' ';
+                    macAdd_txt.Text += '-';
                 }
-
-                
+                macAdd_txt.Text = macAdd_txt.Text.Remove(macAdd_txt.Text.Length-1);
             }
-
-            macAdd_txt.Text = macAdd_txt.Text.Replace(':', ' '); */
+            else
+            {
+                macAdd_txt.Text = adMacs[adapterCB.SelectedIndex]; 
+            }      
         }
 
         //-----------------------------------------------------------------------------------------
@@ -133,6 +89,12 @@ namespace Vimba
         private void randomMaxChkBox_CheckedChanged(object sender, EventArgs e)
         {
             adapterCB_SelectedIndexChanged(sender, e);
+        }
+
+        private void pathSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FirstTime FT = new FirstTime();
+            FT.ShowDialog();
         }
     }
 }

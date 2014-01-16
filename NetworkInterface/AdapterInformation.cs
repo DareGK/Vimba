@@ -118,7 +118,7 @@ namespace NetworkInterface
             do
             {
                 tempAdapter = (IP_ADAPTER_INFO)Marshal.PtrToStructure(nextAdapterPtr, typeof(IP_ADAPTER_INFO));
-                AdapterName.Add(tempAdapter.AdapterName);
+                AdapterName.Add(tempAdapter.AdapterDescription);
 
                 nextAdapterPtr = tempAdapter.Next;
             } while (nextAdapterPtr != IntPtr.Zero);
@@ -143,7 +143,7 @@ namespace NetworkInterface
             do
             {
                 tempAdapter = (IP_ADAPTER_INFO)Marshal.PtrToStructure(nextAdapterPtr, typeof(IP_ADAPTER_INFO));
-                AdapterMac.Add(BitConverter.ToString(tempAdapter.Address));
+                AdapterMac.Add(BitConverter.ToString(tempAdapter.Address).Substring(0,17));
 
                 nextAdapterPtr = tempAdapter.Next;
             } while (nextAdapterPtr != IntPtr.Zero);
