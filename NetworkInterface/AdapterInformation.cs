@@ -77,6 +77,11 @@ namespace NetworkInterface
             
         }
 
+        //--------------------------------------------------------------------------------
+        /// <summary>
+        /// Inial process of gathering all the information about the adapters
+        /// </summary>
+
         public void GetAdapters()
         {
             long structSize = Marshal.SizeOf(typeof (IP_ADAPTER_INFO));
@@ -95,6 +100,12 @@ namespace NetworkInterface
                 _adapterInfo = (IP_ADAPTER_INFO)Marshal.PtrToStructure(pAdapter, typeof(IP_ADAPTER_INFO));
             }
         }
+
+        //--------------------------------------------------------------------------------
+        /// <summary>
+        /// Gets all the adapter names for each NIC
+        /// </summary>
+        /// <returns>String array full of names</returns>
 
         public string[] GetAdaptersNames()
         {
@@ -116,6 +127,11 @@ namespace NetworkInterface
             return AdapterName.ToArray();
         }
 
+        //--------------------------------------------------------------------------------
+        /// <summary>
+        /// Gets an array of Mac address for each NIC
+        /// </summary>
+        /// <returns>String array of macs</returns>
         public string[] GetAdaptersMacs()
         {
             List<string> AdapterMac = new List<string>();
